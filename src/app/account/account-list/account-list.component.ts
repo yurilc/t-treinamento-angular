@@ -13,9 +13,15 @@ export class AccountListComponent implements OnInit {
     new Account(1234, 12121, 'Conta Poupança', 710)
   ];
 
+  contaSelecionada: Account;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelectAccount(conta: Account) {
+    this.contaSelecionada = conta;
   }
 
 }

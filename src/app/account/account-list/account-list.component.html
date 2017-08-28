@@ -3,13 +3,16 @@
     <ul class="list-group">
       <li
         class="list-group-item"
-        *ngFor="let conta of contas">
+        *ngFor="let conta of contas"
+        (click)="onSelectAccount(conta)">
         {{ conta.agencia }} - {{ conta.conta }}
       </li>
     </ul>
   </div>
 
   <div class="col-xs-8">
-      <app-account-edit></app-account-edit>
+      <app-account-edit
+        [account]="contaSelecionada"
+        *ngIf="contaSelecionada"></app-account-edit>
   </div>
 </div>

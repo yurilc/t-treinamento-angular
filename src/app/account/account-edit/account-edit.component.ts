@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Account } from '../account.model';
 
 @Component({
   selector: 'app-account-edit',
@@ -7,10 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountEditComponent implements OnInit {
 
-  agencia: number;
-  conta: number;
-  tipo: string;
-  saldo: number;
+  @Input('account') conta: Account = new Account(0, 0, '', 0);
 
   constructor() { }
 
@@ -18,10 +16,6 @@ export class AccountEditComponent implements OnInit {
   }
 
   onSave() {
-    this.tipo = 'Conta Corrente';
-    console.log(this.agencia);
     console.log(this.conta);
-    console.log(this.tipo);
-    console.log(this.saldo);
   }
 }
