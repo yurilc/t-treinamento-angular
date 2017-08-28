@@ -18,6 +18,7 @@ export class AccountListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    //console.log('OnInit');
   }
 
   onSelectAccount(index: number) {

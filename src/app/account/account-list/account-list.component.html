@@ -15,7 +15,10 @@
       <app-account-edit
         [account]="getSelectedAccount()"
         (accountSaved)="onAccountSaved($event)"
-        *ngIf="selectedIndex >= 0; else emptyAccount"></app-account-edit>
+        *ngIf="selectedIndex >= 0; else emptyAccount">
+        
+        Cadastro de Conta
+      </app-account-edit>
 
       <ng-template #emptyAccount>
         <p>Favor selecionar uma conta!</p>
