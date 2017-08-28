@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
 })
 export class AccountComponent {
 
+    agencia = '1234';
+    conta: string = '0003212';
+    tipo = 'Conta Corrente';
+    saldo: number = 120.00;
 }
