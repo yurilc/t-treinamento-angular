@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-4">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let conta of contas">
+        {{ conta.agencia }} - {{ conta.conta }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-xs-8">
+      <app-account-edit></app-account-edit>
+  </div>
+</div>
