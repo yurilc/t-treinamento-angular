@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, Input, Output, EventEmitter,
           ViewChild, ElementRef, DoCheck,
-          AfterContentInit, OnDestroy } from '@angular/core';
+          AfterContentInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Account } from '../account.model';
 
 @Component({
@@ -17,11 +17,29 @@ export class AccountEditComponent implements
   @Output() accountSaved = new EventEmitter<Account>();
 
   @ViewChild('agencia') agenciaFormGroup: ElementRef;
+  @ViewChild('saldo') saldoFormGroup: ElementRef;
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
   ngOnChanges() {
     console.log('OnChanges');
+    console.log(this.renderer);
+    if(this.conta.saldo < 0) {
+      this.renderer.addClass(
+        this.saldoFormGroup.nativeElement,
+        'has-error'
+      );
+    } else {
+      this.renderer.removeClass(
+        this.saldoFormGroup.nativeElement,
+        'has-error'
+      );
+    }
+      //this.saldoFormGroup.nativeElement.className = 'form-group has-error';
+  }
+
+  log() {
+    console.log(this.conta.saldo);
   }
 
   ngOnInit() {
@@ -36,7 +54,7 @@ export class AccountEditComponent implements
   ngAfterContentInit() {
     console.log('AfterContentInit');
   }
-  
+
   ngOnDestroy(): void {
     console.log('OnDestroy');
   }

@@ -47,7 +47,7 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <div class="form-group">
+            <div class="form-group" #saldo>
               <label for="saldo" class="control-label">
                 Saldo
               </label>
@@ -55,7 +55,9 @@
                 type="number"
                 id="saldo"
                 class="form-control"
-                [(ngModel)]="conta.saldo">
+                (change)="log()"
+                [(ngModel)]="conta.saldo"
+                [negativeHighlight]="conta.saldo">
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ export class AccountListComponent implements OnInit {
 
   contas = [
     new Account(1234, 99123, 'Conta Corrente', 120),
-    new Account(1234, 12121, 'Conta Poupança', 710)
+    new Account(1234, 12121, 'Conta Poupança', -710)
   ];
 
   selectedIndex: number;

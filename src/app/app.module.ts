@@ -8,6 +8,7 @@ import { AccountEditComponent } from './account/account-edit/account-edit.compon
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { ServiceListComponent } from './services/service-list/service-list.component';
 import { ServiceEditComponent } from './services/service-edit/service-edit.component'
+import { NegativeHighlightDirective } from "./shared/negative-highlight.directive";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ServiceEditComponent } from './services/service-edit/service-edit.compo
     AccountEditComponent,
     AccountListComponent,
     ServiceListComponent,
-    ServiceEditComponent
+    ServiceEditComponent,
+    NegativeHighlightDirective
   ],
   imports: [
     BrowserModule,
