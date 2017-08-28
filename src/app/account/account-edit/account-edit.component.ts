@@ -17,4 +17,11 @@ export class AccountEditComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSave() {
+    this.tipo = 'Conta Corrente';
+    console.log(this.agencia);
+    console.log(this.conta);
+    console.log(this.tipo);
+    console.log(this.saldo);
+  }
 }

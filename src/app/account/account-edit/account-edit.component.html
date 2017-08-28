@@ -9,7 +9,8 @@
                 <input
                   type="number"
                   id="agencia"
-                  class="form-control">
+                  class="form-control"
+                  [(ngModel)]="agencia">
               </div>
             </div>
         </div>
@@ -22,7 +23,8 @@
                   <input
                     type="number"
                     id="conta"
-                    class="form-control">
+                    class="form-control"
+                    [(ngModel)]="conta">
                 </div>
             </div>
         </div>
@@ -35,7 +37,8 @@
                 <input
                   type="text"
                   id="tipo"
-                  class="form-control">
+                  class="form-control"
+                  [(ngModel)]="tipo">
               </div>
             </div>
         </div>
@@ -48,12 +51,14 @@
               <input
                 type="number"
                 id="saldo"
-                class="form-control">
+                class="form-control"
+                [(ngModel)]="saldo">
             </div>
           </div>
         </div>
         <button
           type="button"
-          class="btn btn-primary">Salvar</button>
+          class="btn btn-primary"
+          (click)="onSave()">Salvar</button>
     </div>
 </div>
