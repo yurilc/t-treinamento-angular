@@ -3,8 +3,9 @@
     <ul class="list-group">
       <li
         class="list-group-item"
-        *ngFor="let conta of contas"
-        (click)="onSelectAccount(conta)">
+        *ngFor="let conta of contas; let i = index"
+        (click)="onSelectAccount(i)"
+        [ngClass]="{'active': i == selectedIndex}">
         {{ conta.agencia }} - {{ conta.conta }}
       </li>
     </ul>
@@ -12,9 +13,9 @@
 
   <div class="col-xs-8">
       <app-account-edit
-        [account]="contaSelecionada"
+        [account]="getSelectedAccount()"
         (accountSaved)="onAccountSaved($event)"
-        *ngIf="contaSelecionada; else emptyAccount"></app-account-edit>
+        *ngIf="selectedIndex >= 0; else emptyAccount"></app-account-edit>
 
       <ng-template #emptyAccount>
         <p>Favor selecionar uma conta!</p>
