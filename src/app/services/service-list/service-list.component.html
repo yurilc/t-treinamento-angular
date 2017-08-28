@@ -3,9 +3,17 @@
         <ul class="list-group">
             <li
                 class="list-group-item"
-                *ngFor="let service of services">
+                *ngFor="let service of services"
+                (click)="onSelectService(service)">
                 {{ service.name }} - {{ service.value }}
             </li>
         </ul>
+    </div>
+
+    <div class="col-xs-8">
+        <app-service-edit
+            [service]="selectedService"
+            (serviceSaved)="onServiceSaved($event)"
+            *ngIf="selectedService"></app-service-edit>
     </div>
 </div>

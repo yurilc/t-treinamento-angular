@@ -12,4 +12,14 @@ export class ServiceListComponent {
         new Service('SMS', 2.25),
         new Service('Cheque Especial', 1.99)
     ];
+
+    selectedService: Service;
+
+    onSelectService(service: Service) {
+        this.selectedService = service;
+    }
+
+    onServiceSaved(service: Service) {
+        console.log(service);
+    }
 }
