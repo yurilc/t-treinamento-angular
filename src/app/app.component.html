@@ -5,12 +5,13 @@
       </div>
 
       <ul class="nav navbar-nav">
-        <li><a href="#">Contas</a></li>
-        <li><a href="#">Serviços</a></li>
+        <li><a (click)="showPage('accounts')" style="cursor: pointer;">Contas</a></li>
+        <li><a (click)="showPage('services')" style="cursor: pointer;">Serviços</a></li>
       </ul>
     </div>
 </nav>
 
 <div class="container">
-  <app-account-list></app-account-list>
+  <app-account-list *ngIf="page === 'accounts'"></app-account-list>
+  <app-service-list *ngIf="page === 'services'"></app-service-list>
 </div>
