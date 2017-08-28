@@ -24,4 +24,8 @@ export class AccountListComponent implements OnInit {
     this.contaSelecionada = conta;
   }
 
+  onAccountSaved(conta: Account) {
+    console.log('AccountListComponent:',conta);
+  }
+
 }

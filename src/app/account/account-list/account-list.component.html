@@ -13,6 +13,11 @@
   <div class="col-xs-8">
       <app-account-edit
         [account]="contaSelecionada"
-        *ngIf="contaSelecionada"></app-account-edit>
+        (accountSaved)="onAccountSaved($event)"
+        *ngIf="contaSelecionada; else emptyAccount"></app-account-edit>
+
+      <ng-template #emptyAccount>
+        <p>Favor selecionar uma conta!</p>
+      </ng-template>
   </div>
 </div>

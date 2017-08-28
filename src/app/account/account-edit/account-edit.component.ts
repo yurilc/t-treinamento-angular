@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Account } from '../account.model';
 
 @Component({
@@ -10,12 +10,14 @@ export class AccountEditComponent implements OnInit {
 
   @Input('account') conta: Account = new Account(0, 0, '', 0);
 
+  @Output() accountSaved = new EventEmitter<Account>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
   onSave() {
-    console.log(this.conta);
+    this.accountSaved.next(this.conta);
   }
 }
