@@ -12,6 +12,8 @@ import { NegativeHighlightDirective } from "./shared/negative-highlight.directiv
 import { HighlightDirective } from './shared/highlight.directive';
 import { DelayDirective } from './shared/delay.directive';
 import { DemoSwitchComponent } from './demo-switch/demo-switch.component';
+import { ReversePipe } from "./shared/reverse.pipe";
+import { ResumePipe } from "./shared/resume.pipe";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { DemoSwitchComponent } from './demo-switch/demo-switch.component';
     NegativeHighlightDirective,
     HighlightDirective,
     DelayDirective,
-    DemoSwitchComponent
+    DemoSwitchComponent,
+    ReversePipe,
+    ResumePipe
   ],
   imports: [
     BrowserModule,

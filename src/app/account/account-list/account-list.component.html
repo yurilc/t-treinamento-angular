@@ -6,11 +6,12 @@
         *ngFor="let conta of contas; let i = index"
         (click)="onSelectAccount(i)"
         [ngClass]="{'active': i == selectedIndex}">
-        <ng-template [appDelay]="{time: 500, index: i}">
-          {{ conta.agencia }} - {{ conta.conta }}
-        </ng-template>
+          <p>{{ conta.agencia }} - {{ conta.conta }}</p>
+          <p>{{ conta.tipo | resume : limit }}</p>
       </li>
     </ul>
+    <button type="button" class="btn btn-default"
+      (click)="aumentarLimite()">Aumentar limite</button>
   </div>
 
   <div class="col-xs-8">

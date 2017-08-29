@@ -15,6 +15,8 @@ export class AccountListComponent implements OnInit {
 
   selectedIndex: number;
 
+  limit = 4;
+
   constructor() { }
 
   ngOnInit() {
@@ -30,7 +32,13 @@ export class AccountListComponent implements OnInit {
   }
 
   onAccountSaved(conta: Account) {
-    console.log('AccountListComponent:',conta);
+    //this.contas.push(new Account(conta.agencia, conta.conta, conta.tipo, conta.saldo));
+    //console.log('AccountListComponent:',conta);
+    conta.tipo = 'abc123';
+  }
+
+  aumentarLimite() {
+    this.limit++;
   }
 
 }
