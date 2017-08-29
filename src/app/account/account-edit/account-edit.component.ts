@@ -7,8 +7,7 @@ import { AccountsService } from "../accounts.service";
 @Component({
   selector: 'app-account-edit',
   templateUrl: './account-edit.component.html',
-  styleUrls: ['./account-edit.component.css'],
-  providers: [AccountsService]
+  styleUrls: ['./account-edit.component.css']
 })
 export class AccountEditComponent implements 
   OnChanges, OnInit, DoCheck,
@@ -18,7 +17,7 @@ export class AccountEditComponent implements
 
   @Input('index') index: number;
 
-  @Output() accountSaved = new EventEmitter<Account>();
+  //@Output() accountSaved = new EventEmitter<Account>();
 
   @ViewChild('agencia') agenciaFormGroup: ElementRef;
   @ViewChild('saldo') saldoFormGroup: ElementRef;
@@ -27,7 +26,17 @@ export class AccountEditComponent implements
               private accountsService: AccountsService) { }
 
   ngOnChanges() {
-    this.conta = this.accountsService.getAccount(this.index);
+    if(this.index != null) {
+      const conta = this.accountsService.getAccount(this.index);
+      this.conta = new Account(
+        conta.agencia,
+        conta.conta,
+        conta.tipo,
+        conta.saldo
+      );
+    } else {
+      this.conta = new Account(0, 0, '', 0);
+    }
     console.log(this.renderer);
     if(this.conta.saldo < 0) {
       this.renderer.addClass(
@@ -65,6 +74,13 @@ export class AccountEditComponent implements
   }
 
   onSave() {
-    this.accountSaved.next(this.conta);
+    //this.accountSaved.next(this.conta);
+    if(this.index != null) {
+      this.accountsService.update(this.index, this.conta);
+    } else {
+      this.accountsService.save(this.conta);
+    }
+    this.conta = new Account(0, 0, '', 0);
+    this.index = null;
   }
 }

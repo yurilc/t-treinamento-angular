@@ -12,7 +12,7 @@ export class AccountListComponent implements OnInit {
 
   contas: Account[];
 
-  selectedIndex: number;
+  selectedIndex: number = null;
 
   limit = 4;
 
@@ -20,6 +20,9 @@ export class AccountListComponent implements OnInit {
 
   ngOnInit() {
     this.contas = this.accountsService.getAccounts();
+    this.accountsService.accountsUpdated.subscribe(
+      (contas: Account[]) => this.contas = contas
+    );
   }
 
   onSelectAccount(index: number) {
@@ -38,6 +41,10 @@ export class AccountListComponent implements OnInit {
 
   aumentarLimite() {
     this.limit++;
+  }
+
+  onNovaConta(){
+    this.selectedIndex = null;
   }
 
 }

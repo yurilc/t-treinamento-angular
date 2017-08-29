@@ -10,15 +10,15 @@
           <p>{{ conta.tipo | resume : limit }}</p>
       </li>
     </ul>
+    <button class="btn btn-success" type="button"
+      (click)="onNovaConta()">Criar Conta</button>
+
     <button type="button" class="btn btn-default"
       (click)="aumentarLimite()">Aumentar limite</button>
   </div>
 
   <div class="col-xs-8">
-      <app-account-edit
-        [index]="selectedIndex"
-        (accountSaved)="onAccountSaved($event)"
-        *ngIf="selectedIndex >= 0; else emptyAccount">
+      <app-account-edit [index]="selectedIndex">
         
         <h3 highlight>Cadastro de Conta</h3>
       </app-account-edit>

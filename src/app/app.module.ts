@@ -14,6 +14,7 @@ import { DelayDirective } from './shared/delay.directive';
 import { DemoSwitchComponent } from './demo-switch/demo-switch.component';
 import { ReversePipe } from "./shared/reverse.pipe";
 import { ResumePipe } from "./shared/resume.pipe";
+import { LoggingService } from "./shared/logging.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { ResumePipe } from "./shared/resume.pipe";
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ LoggingService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
