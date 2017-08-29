@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Account } from '../account.model';
 import { AccountsService } from '../accounts.service';
 
@@ -16,7 +18,8 @@ export class AccountListComponent implements OnInit {
 
   limit = 4;
 
-  constructor(private accountsService: AccountsService) { }
+  constructor(private accountsService: AccountsService,
+              private router: Router) { }
 
   ngOnInit() {
     this.contas = this.accountsService.getAccounts();
@@ -44,7 +47,7 @@ export class AccountListComponent implements OnInit {
   }
 
   onNovaConta(){
-    this.selectedIndex = null;
+    this.router.navigate(['/accounts', 'new']);
   }
 
 }

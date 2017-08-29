@@ -4,8 +4,8 @@
       <li
         class="list-group-item"
         *ngFor="let conta of contas; let i = index"
-        (click)="onSelectAccount(i)"
-        [ngClass]="{'active': i == selectedIndex}">
+        [routerLink]="['/accounts', i , 'edit']"
+        routerLinkActive="active">
           <p>{{ conta.agencia }} - {{ conta.conta }}</p>
           <p>{{ conta.tipo | resume : limit }}</p>
       </li>

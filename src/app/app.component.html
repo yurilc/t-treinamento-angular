@@ -5,8 +5,10 @@
       </div>
 
       <ul class="nav navbar-nav">
-        <li><a (click)="showPage('accounts')" style="cursor: pointer;">Contas</a></li>
-        <li><a (click)="showPage('services')" style="cursor: pointer;">Serviços</a></li>
+        <li routerLinkActive="active"><a 
+            [routerLink]="['/accounts']">Contas</a></li>
+        <li routerLinkActive="active"><a
+            routerLink="/services">Serviços</a></li>
       </ul>
     </div>
 </nav>
