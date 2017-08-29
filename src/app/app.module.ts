@@ -17,6 +17,7 @@ import { ReversePipe } from "./shared/reverse.pipe";
 import { ResumePipe } from "./shared/resume.pipe";
 import { LoggingService } from "./shared/logging.service";
 import { ServicesService } from "./services/services.service";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/accounts', pathMatch: 'full' },
@@ -27,7 +28,9 @@ const routes: Routes = [
   { path: 'services', component: ServiceListComponent, children: [
     { path: ':id/edit', component: ServiceEditComponent },
     { path: 'new', component: ServiceEditComponent }
-  ] }
+  ] },
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({
@@ -43,7 +46,8 @@ const routes: Routes = [
     DelayDirective,
     DemoSwitchComponent,
     ReversePipe,
-    ResumePipe
+    ResumePipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
