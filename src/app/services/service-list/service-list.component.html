@@ -11,9 +11,6 @@
     </div>
 
     <div class="col-xs-8">
-        <app-service-edit
-            [service]="selectedService"
-            (serviceSaved)="onServiceSaved($event)"
-            *ngIf="selectedService"></app-service-edit>
+        <router-outlet></router-outlet>
     </div>
 </div>

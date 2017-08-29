@@ -18,13 +18,6 @@
   </div>
 
   <div class="col-xs-8">
-      <app-account-edit [index]="selectedIndex">
-        
-        <h3 highlight>Cadastro de Conta</h3>
-      </app-account-edit>
-
-      <ng-template #emptyAccount>
-        <p>Favor selecionar uma conta!</p>
-      </ng-template>
+      <router-outlet></router-outlet>
   </div>
 </div>

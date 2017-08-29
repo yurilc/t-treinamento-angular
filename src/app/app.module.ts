@@ -20,8 +20,14 @@ import { ServicesService } from "./services/services.service";
 
 const routes: Routes = [
   { path: '', redirectTo: '/accounts', pathMatch: 'full' },
-  { path: 'accounts', component: AccountListComponent },
-  { path: 'services', component: ServiceListComponent }
+  { path: 'accounts', component: AccountListComponent, children: [
+    { path: ':id/edit', component: AccountEditComponent },
+    { path: 'new', component: AccountEditComponent }
+  ] },
+  { path: 'services', component: ServiceListComponent, children: [
+    { path: ':id/edit', component: ServiceEditComponent },
+    { path: 'new', component: ServiceEditComponent }
+  ] }
 ];
 
 @NgModule({
