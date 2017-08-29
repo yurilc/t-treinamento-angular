@@ -10,6 +10,7 @@ import { ServiceListComponent } from './services/service-list/service-list.compo
 import { ServiceEditComponent } from './services/service-edit/service-edit.component'
 import { NegativeHighlightDirective } from "./shared/negative-highlight.directive";
 import { HighlightDirective } from './shared/highlight.directive';
+import { DelayDirective } from './shared/delay.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HighlightDirective } from './shared/highlight.directive';
     ServiceListComponent,
     ServiceEditComponent,
     NegativeHighlightDirective,
-    HighlightDirective
+    HighlightDirective,
+    DelayDirective
   ],
   imports: [
     BrowserModule,

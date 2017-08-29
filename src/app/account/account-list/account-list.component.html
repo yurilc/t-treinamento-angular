@@ -6,7 +6,9 @@
         *ngFor="let conta of contas; let i = index"
         (click)="onSelectAccount(i)"
         [ngClass]="{'active': i == selectedIndex}">
-        {{ conta.agencia }} - {{ conta.conta }}
+        <ng-template [appDelay]="{time: 500, index: i}">
+          {{ conta.agencia }} - {{ conta.conta }}
+        </ng-template>
       </li>
     </ul>
   </div>
