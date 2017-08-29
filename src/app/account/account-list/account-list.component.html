@@ -16,7 +16,7 @@
 
   <div class="col-xs-8">
       <app-account-edit
-        [account]="getSelectedAccount()"
+        [index]="selectedIndex"
         (accountSaved)="onAccountSaved($event)"
         *ngIf="selectedIndex >= 0; else emptyAccount">
         

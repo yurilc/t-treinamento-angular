@@ -2,27 +2,32 @@ import { Component, OnChanges, OnInit, Input, Output, EventEmitter,
           ViewChild, ElementRef, DoCheck,
           AfterContentInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Account } from '../account.model';
+import { AccountsService } from "../accounts.service";
 
 @Component({
   selector: 'app-account-edit',
   templateUrl: './account-edit.component.html',
-  styleUrls: ['./account-edit.component.css']
+  styleUrls: ['./account-edit.component.css'],
+  providers: [AccountsService]
 })
 export class AccountEditComponent implements 
   OnChanges, OnInit, DoCheck,
   AfterContentInit, OnDestroy {
 
-  @Input('account') conta: Account = new Account(0, 0, '', 0);
+  conta: Account;
+
+  @Input('index') index: number;
 
   @Output() accountSaved = new EventEmitter<Account>();
 
   @ViewChild('agencia') agenciaFormGroup: ElementRef;
   @ViewChild('saldo') saldoFormGroup: ElementRef;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2,
+              private accountsService: AccountsService) { }
 
   ngOnChanges() {
-    console.log('OnChanges');
+    this.conta = this.accountsService.getAccount(this.index);
     console.log(this.renderer);
     if(this.conta.saldo < 0) {
       this.renderer.addClass(

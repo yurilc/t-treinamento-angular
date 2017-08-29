@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from '../account.model';
+import { AccountsService } from '../accounts.service';
 
 @Component({
   selector: 'app-account-list',
   templateUrl: './account-list.component.html',
-  styleUrls: ['./account-list.component.css']
+  styleUrls: ['./account-list.component.css'],
+  providers: [ AccountsService ]
 })
 export class AccountListComponent implements OnInit {
 
-  contas = [
-    new Account(1234, 99123, 'Conta Corrente', 120),
-    new Account(1234, 12121, 'Conta Poupança', -710)
-  ];
+  contas: Account[];
 
   selectedIndex: number;
 
   limit = 4;
 
-  constructor() { }
+  constructor(private accountsService: AccountsService) { }
 
   ngOnInit() {
-    //console.log('OnInit');
+    this.contas = this.accountsService.getAccounts();
   }
 
   onSelectAccount(index: number) {
