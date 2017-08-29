@@ -11,6 +11,7 @@ import { ServiceEditComponent } from './services/service-edit/service-edit.compo
 import { NegativeHighlightDirective } from "./shared/negative-highlight.directive";
 import { HighlightDirective } from './shared/highlight.directive';
 import { DelayDirective } from './shared/delay.directive';
+import { DemoSwitchComponent } from './demo-switch/demo-switch.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DelayDirective } from './shared/delay.directive';
     ServiceEditComponent,
     NegativeHighlightDirective,
     HighlightDirective,
-    DelayDirective
+    DelayDirective,
+    DemoSwitchComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ export class HighlightDirective {
     @HostBinding('style.backgroundColor') 
     background = 'green';
 
-    @HostBinding('style.color')
+    @HostBinding('style.color') 
     color = 'yellow';
 
     @HostListener('mouseover', ['$event.clientX', '$event.clientY'])
@@ -17,8 +17,7 @@ export class HighlightDirective {
         console.log(x, y);
     }
 
-    @HostListener('mouseleave')
-    resetBackground() {
+    @HostListener('mouseleave') resetBackground() {
         this.background = 'green';
     }
 

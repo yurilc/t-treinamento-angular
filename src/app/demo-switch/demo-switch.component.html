@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      <label for="pais" class="control-label">País</label>
+      <select
+        id="pais"
+        class="form-control"
+        [(ngModel)]="pais">
+        <option
+          *ngFor="let p of paises"
+          [value]="p.sigla">{{ p.nome }}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div [ngSwitch]="pais">
+      <p *ngSwitchCase="'BR'">País escolhido: Brasil</p>
+      <p *ngSwitchCase="'US'">País escolhido: Estados Unidos</p>
+      <p *ngSwitchCase="'JP'">País escolhido: Japão</p>
+      <p *ngSwitchCase="'ES'">País escolhido: Espanha</p>
+      <p *ngSwitchDefault>País escolhido: Nenhum</p>
+    </div>
+  </div>
+</div>
