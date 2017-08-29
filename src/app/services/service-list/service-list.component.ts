@@ -26,13 +26,19 @@ export class ServiceListComponent implements OnInit, OnDestroy {
         this.subscription = this.servicesService.getServices().subscribe(
             (service: Service) => {
                 console.log('Recebeu do observable: ', service);
+            },
+            (error) => {
+                console.log('erro: ', error);
+            },
+            () => {
+                console.log("completou");
             }
         );
     }
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
-        this.servicesService.unsubscribe();
+        //this.servicesService.unsubscribe();
     }
 
     onSelectService(service: Service) {
