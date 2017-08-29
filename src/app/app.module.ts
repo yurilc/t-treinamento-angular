@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AccountComponent } from './account/account.component';
@@ -16,6 +17,12 @@ import { ReversePipe } from "./shared/reverse.pipe";
 import { ResumePipe } from "./shared/resume.pipe";
 import { LoggingService } from "./shared/logging.service";
 import { ServicesService } from "./services/services.service";
+
+const routes: Routes = [
+  { path: '', redirectTo: '/accounts', pathMatch: 'full' },
+  { path: 'accounts', component: AccountListComponent },
+  { path: 'services', component: ServiceListComponent }
+];
 
 @NgModule({
   declarations: [
@@ -34,7 +41,8 @@ import { ServicesService } from "./services/services.service";
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     LoggingService,
