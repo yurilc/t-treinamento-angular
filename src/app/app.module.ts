@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AccountComponent } from './account/account.component';
@@ -18,20 +17,9 @@ import { ResumePipe } from "./shared/resume.pipe";
 import { LoggingService } from "./shared/logging.service";
 import { ServicesService } from "./services/services.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from "./app-routing.module";
 
-const routes: Routes = [
-  { path: '', redirectTo: '/accounts', pathMatch: 'full' },
-  { path: 'accounts', component: AccountListComponent, children: [
-    { path: ':id/edit', component: AccountEditComponent },
-    { path: 'new', component: AccountEditComponent }
-  ] },
-  { path: 'services', component: ServiceListComponent, children: [
-    { path: ':id/edit', component: ServiceEditComponent },
-    { path: 'new', component: ServiceEditComponent }
-  ] },
-  { path: 'not-found', component: PageNotFoundComponent },
-  { path: '**', redirectTo: '/not-found' }
-];
+
 
 @NgModule({
   declarations: [
@@ -52,7 +40,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
   providers: [
     LoggingService,
