@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Service } from '../service.model';
@@ -17,7 +18,9 @@ export class ServiceListComponent implements OnInit, OnDestroy {
 
     subscription: Subscription;
 
-    constructor(private servicesService: ServicesService) {}
+    constructor(private servicesService: ServicesService,
+                private router: Router,
+                private route: ActivatedRoute) {}
 
     ngOnInit() {
         this.subscription = this.servicesService
@@ -40,5 +43,10 @@ export class ServiceListComponent implements OnInit, OnDestroy {
 
     onServiceSaved(service: Service) {
         console.log(service);
+    }
+
+    onNewService() {
+        this.router.navigate(['new'],
+            { relativeTo: this.route });
     }
 }

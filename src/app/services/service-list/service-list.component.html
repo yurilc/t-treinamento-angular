@@ -3,11 +3,17 @@
         <ul class="list-group">
             <li
                 class="list-group-item"
-                *ngFor="let service of services"
-                (click)="onSelectService(service)">
+                *ngFor="let service of services; let i = index"
+                [routerLink]="[i, 'edit']"
+                routerLinkActive="active">
                 {{ service.name }} - {{ service.value }}
             </li>
         </ul>
+
+        <button
+            type="button"
+            class="btn btn-success"
+            (click)="onNewService()">Novo Serviço</button>
     </div>
 
     <div class="col-xs-8">
