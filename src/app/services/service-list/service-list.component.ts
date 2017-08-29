@@ -11,10 +11,7 @@ import { ServicesService } from '../services.service';
 })
 export class ServiceListComponent implements OnInit, OnDestroy {
 
-    services = [
-        new Service('SMS', 2.25),
-        new Service('Cheque Especial', 1.99)
-    ];
+    services: Service[];
 
     selectedService: Service;
 
@@ -23,17 +20,13 @@ export class ServiceListComponent implements OnInit, OnDestroy {
     constructor(private servicesService: ServicesService) {}
 
     ngOnInit() {
-        this.subscription = this.servicesService.getServices().subscribe(
-            (service: Service) => {
-                console.log('Recebeu do observable: ', service);
-            },
-            (error) => {
-                console.log('erro: ', error);
-            },
-            () => {
-                console.log("completou");
-            }
-        );
+        this.subscription = this.servicesService
+            .servicesSubject
+            .subscribe(
+                (services: Service[]) => {
+                    this.services = services;
+                });
+        this.servicesService.getServices();
     }
 
     ngOnDestroy() {
