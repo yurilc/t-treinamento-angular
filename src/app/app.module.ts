@@ -15,6 +15,7 @@ import { DemoSwitchComponent } from './demo-switch/demo-switch.component';
 import { ReversePipe } from "./shared/reverse.pipe";
 import { ResumePipe } from "./shared/resume.pipe";
 import { LoggingService } from "./shared/logging.service";
+import { ServicesService } from "./services/services.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,10 @@ import { LoggingService } from "./shared/logging.service";
     BrowserModule,
     FormsModule
   ],
-  providers: [ LoggingService ],
+  providers: [
+    LoggingService,
+    ServicesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
