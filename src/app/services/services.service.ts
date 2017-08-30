@@ -21,5 +21,15 @@ export class ServicesService {
         }, 2000);
     }
 
-    
+    getService(index: number) {
+        return this.services[index];
+    }
+
+    save(service: Service) {
+        this.services.push(service);
+    }
+
+    update(index: number, service: Service) {
+        this.services[index] = service;
+    }
 }

@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, Input, Output, EventEmitter,
           ViewChild, ElementRef, DoCheck,
           AfterContentInit, OnDestroy, Renderer2 } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Account } from '../account.model';
 import { AccountsService } from "../accounts.service";
@@ -26,6 +26,7 @@ export class AccountEditComponent implements
 
   constructor(private renderer: Renderer2,
               private accountsService: AccountsService,
+              private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -86,7 +87,8 @@ export class AccountEditComponent implements
     } else {
       this.accountsService.save(this.conta);
     }
-    this.conta = new Account(0, 0, '', 0);
-    this.index = null;
+    // this.conta = new Account(0, 0, '', 0);
+    // this.index = null;
+    this.router.navigate(['/accounts']);
   }
 }
