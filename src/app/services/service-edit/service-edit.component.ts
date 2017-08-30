@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 import { Service } from '../service.model';
 import { ServicesService } from "../services.service";
@@ -18,7 +20,7 @@ export class ServiceEditComponent implements OnInit {
     'name': new FormControl(null, [
       Validators.required,
       this.validacaoNomesProibidos.bind(this)
-    ]),
+    ], this.validacaoNomesProibidosAsync.bind(this)),
     'value': new FormControl(null, [
       Validators.required,
       Validators.min(0)
@@ -67,6 +69,20 @@ export class ServiceEditComponent implements OnInit {
       return {'nomeProibido': control.value};
     }
     return null;
+  }
+  
+  validacaoNomesProibidosAsync(control: FormControl):
+    Promise<{[key: string]: any}> {
+    return new Promise<{[key: string]: any}>(
+      (resolve, rejext)=>{
+        setTimeout(()=> {
+          if(control.value === 'texto'){
+            resolve({'nomeProibido': control.value});
+          } else {
+            resolve(null);
+          }
+        }, 1000);
+    })
   }
 
 }
