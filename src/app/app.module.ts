@@ -19,6 +19,7 @@ import { ServicesService } from "./services/services.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { AccountDetailComponent } from './account/account-detail/account-detail.component';
+import { TransactionListComponent } from './transaction-list/transaction-list.component';
 
 
 
@@ -37,7 +38,8 @@ import { AccountDetailComponent } from './account/account-detail/account-detail.
     ReversePipe,
     ResumePipe,
     PageNotFoundComponent,
-    AccountDetailComponent
+    AccountDetailComponent,
+    TransactionListComponent
   ],
   imports: [
     BrowserModule,
