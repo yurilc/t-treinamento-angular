@@ -12,7 +12,9 @@ import { AuthGuard } from "./auth/auth-guard.service";
 
 const routes: Routes = [
     { path: '', redirectTo: '/accounts', pathMatch: 'full' },
-    { path: 'accounts', component: AccountListComponent, children: [
+    { path: 'accounts', component: AccountListComponent,
+    canActivateChild: [AuthGuard],
+    children: [
       { 
         path: ':id/edit',
         component: AccountEditComponent,
