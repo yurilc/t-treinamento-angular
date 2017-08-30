@@ -13,7 +13,7 @@
                   id="agencia"
                   name="agencia"
                   class="form-control"
-                  ngModel
+                  [(ngModel)]="conta.agencia"
                   required
                   #agencia="ngModel">
                 <span
@@ -24,7 +24,8 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-              <div class="form-group">
+              <div class="form-group"
+                [ngClass]="{'has-error': conta.invalid && conta.touched}">
                   <label for="conta" class="control-label">
                     Conta
                   </label>
@@ -33,14 +34,19 @@
                     id="conta"
                     name="conta"
                     class="form-control"
-                    ngModel
-                    required>
+                    [(ngModel)]="conta.conta"
+                    required
+                    #conta="ngModel">
+                  <span
+                    *ngIf="conta.invalid && conta.touched"
+                    class="help-block">Favor informar a Conta!</span>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
-              <div class="form-group">
+              <div class="form-group"
+                [ngClass]="{'has-error': tipo.invalid && tipo.touched}">
                 <label for="tipo" class="control-label">
                   Tipo
                 </label>
@@ -49,14 +55,19 @@
                   id="tipo"
                   name="tipo"
                   class="form-control"
-                  ngModel
-                  required>
+                  [(ngModel)]="conta.tipo"
+                  required
+                  #tipo="ngModel">
+                <span
+                  *ngIf="tipo.invalid && tipo.touched"
+                  class="help-block">Favor informar o Tipo da conta!</span>
               </div>
             </div>
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <div class="form-group" #saldo>
+            <div class="form-group" 
+              [ngClass]="{'has-error': saldo.invalid && saldo.touched}">
               <label for="saldo" class="control-label">
                 Saldo
               </label>
@@ -66,9 +77,18 @@
                 name="saldo"
                 class="form-control"
                 (change)="log()"
-                [negativeHighlight]="conta.saldo"
-                ngModel
-                required>
+                [(ngModel)]="conta.saldo"
+                required
+                pattern="\d+"
+                #saldo="ngModel">
+              <span
+                *ngIf="saldo.invalid && saldo.touched"
+                class="help-block">
+                <span
+                  *ngIf="saldo.errors['required']">Favor informar o valor do Saldo!</span>
+                <span
+                  *ngIf="saldo.errors['pattern']">Favor informar um saldo positivo!</span>
+              </span>
             </div>
           </div>
         </div>

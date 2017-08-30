@@ -16,6 +16,8 @@ import { CanDeactivateAccount } from "./account-edit-guard.service";
 export class AccountEditComponent implements 
   OnInit, OnDestroy, CanDeactivateAccount {
 
+  @ViewChild('f') form: NgForm;
+
   contaOriginal: Account;
   conta: Account;
   isEditing = true;
@@ -25,8 +27,8 @@ export class AccountEditComponent implements
 
   //@Output() accountSaved = new EventEmitter<Account>();
 
-  @ViewChild('agencia') agenciaFormGroup: ElementRef;
-  @ViewChild('saldo') saldoFormGroup: ElementRef;
+  //@ViewChild('agencia') agenciaFormGroup: ElementRef;
+  //@ViewChild('saldo') saldoFormGroup: ElementRef;
 
   constructor(private renderer: Renderer2,
               private accountsService: AccountsService,
@@ -35,8 +37,8 @@ export class AccountEditComponent implements
 
   ngOnInit() {
     // sincrono
-    this.index = this.route.snapshot.params['id'];
-    this.loadAccount();
+    //this.index = this.route.snapshot.params['id'];
+    //this.loadAccount();
 
     // assyncrono
     this.route.params.subscribe(
@@ -78,12 +80,6 @@ export class AccountEditComponent implements
   loadAccount() {
     if(this.index) {
       this.conta = this.accountsService.getAccount(this.index);
-      this.contaOriginal = new Account(
-        this.conta.agencia,
-        this.conta.conta,
-        this.conta.tipo, 
-        this.conta.saldo
-      );
     } else {
       this.conta = new Account(0, 0, '', 0);
     }
@@ -105,14 +101,14 @@ export class AccountEditComponent implements
     console.log('OnDestroy');
   }
 
-  onSave(form: NgForm) {
-    console.log(form);
+  //onSave(form: NgForm) {
+  onSave() {
     this.isEditing = false;
     //this.accountSaved.next(this.conta);
     if(this.index != null) {
-      this.accountsService.update(this.index, this.conta);
+      this.accountsService.update(this.index, this.form.value);
     } else {
-      this.accountsService.save(this.conta);
+      this.accountsService.save(this.form.value);
     }
     // this.conta = new Account(0, 0, '', 0);
     // this.index = null;
