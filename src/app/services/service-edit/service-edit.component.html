@@ -12,9 +12,14 @@
                 id="name"
                 class="form-control"
                 formControlName="name">
-              <span
+                <span
                 *ngIf="form.get('name').invalid && form.get('name').touched"
-                class="help-block">Favor informar o nome!</span>
+                class="help-block">
+                <span
+                  *ngIf="form.get('name').errors['required']">Favor informar o nome!</span>
+                <span
+                  *ngIf="form.get('name').errors['nomeProibido']">O nome não pode ser '{{form.get('name').errors['nomeProibido']}}'!</span>
+              </span>
           </div>
 
           <div class="form-group"

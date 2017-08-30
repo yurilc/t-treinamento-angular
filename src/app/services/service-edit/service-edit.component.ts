@@ -15,7 +15,10 @@ export class ServiceEditComponent implements OnInit {
   index: number;
 
   form = new FormGroup({
-    'name': new FormControl(null, Validators.required),
+    'name': new FormControl(null, [
+      Validators.required,
+      this.validacaoNomesProibidos.bind(this)
+    ]),
     'value': new FormControl(null, [
       Validators.required,
       Validators.min(0)
@@ -56,6 +59,14 @@ export class ServiceEditComponent implements OnInit {
       // this.router.navigate(['../'], { relativeTo: this.route });
     }
     //this.form.reset();
+  }
+
+  validacaoNomesProibidos(control: FormControl):
+    {[key: string]: any} {
+    if(control.value === 'massagem'){
+      return {'nomeProibido': control.value};
+    }
+    return null;
   }
 
 }
