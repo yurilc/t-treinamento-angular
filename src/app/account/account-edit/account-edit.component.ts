@@ -5,6 +5,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Account } from '../account.model';
 import { AccountsService } from "../accounts.service";
+import { CanDeactivateAccount } from "./account-edit-guard.service";
 
 @Component({
   selector: 'app-account-edit',
@@ -12,9 +13,11 @@ import { AccountsService } from "../accounts.service";
   styleUrls: ['./account-edit.component.css']
 })
 export class AccountEditComponent implements 
-  OnInit, OnDestroy {
+  OnInit, OnDestroy, CanDeactivateAccount {
 
+  contaOriginal: Account;
   conta: Account;
+  isEditing = true;
 
   //@Input('index')
   index: number;
@@ -56,9 +59,30 @@ export class AccountEditComponent implements
       //this.saldoFormGroup.nativeElement.className = 'form-group has-error';
   }
 
+  canDeactivate(): boolean {
+    const canDeactivate = this.isEditing && (
+      this.contaOriginal.agencia != this.conta.agencia
+      || this.contaOriginal.conta != this.conta.conta
+      || this.contaOriginal.tipo != this.conta.tipo
+      || this.contaOriginal.saldo != this.conta.saldo
+    );
+
+    if(canDeactivate) {
+      return confirm('Gostaria de sair desta página?');
+    } else {
+      return true;
+    }
+  }
+
   loadAccount() {
     if(this.index) {
       this.conta = this.accountsService.getAccount(this.index);
+      this.contaOriginal = new Account(
+        this.conta.agencia,
+        this.conta.conta,
+        this.conta.tipo, 
+        this.conta.saldo
+      );
     } else {
       this.conta = new Account(0, 0, '', 0);
     }
@@ -81,6 +105,7 @@ export class AccountEditComponent implements
   }
 
   onSave() {
+    this.isEditing = false;
     //this.accountSaved.next(this.conta);
     if(this.index != null) {
       this.accountsService.update(this.index, this.conta);

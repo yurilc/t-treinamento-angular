@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AccountDetailComponent } from "./account/account-detail/account-detail.component";
 import { TransactionListComponent } from "./transaction-list/transaction-list.component";
 import { AuthGuard } from "./auth/auth-guard.service";
+import { AccountEditGuard } from "./account/account-edit/account-edit-guard.service";
 
 const routes: Routes = [
     { path: '', redirectTo: '/accounts', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
       { 
         path: ':id/edit',
         component: AccountEditComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        canDeactivate: [AccountEditGuard]
       },
       { path: 'new', component: AccountEditComponent },
       { path: ':id', component: AccountDetailComponent, children: [
@@ -26,7 +28,7 @@ const routes: Routes = [
       ] }
     ] },
     { path: 'services', component: ServiceListComponent, children: [
-      { path: ':id/edit', component: ServiceEditComponent },
+      { path: ':id/edit', component: ServiceEditComponent, },
       { path: 'new', component: ServiceEditComponent }
     ] },
     { path: 'not-found', component: PageNotFoundComponent },

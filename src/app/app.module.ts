@@ -22,6 +22,7 @@ import { AccountDetailComponent } from './account/account-detail/account-detail.
 import { TransactionListComponent } from './transaction-list/transaction-list.component';
 import { AuthService } from "./auth/auth.service";
 import { AuthGuard } from "./auth/auth-guard.service";
+import { AccountEditGuard } from "./account/account-edit/account-edit-guard.service";
 
 
 
@@ -52,7 +53,8 @@ import { AuthGuard } from "./auth/auth-guard.service";
     LoggingService,
     ServicesService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    AccountEditGuard
   ],
   bootstrap: [AppComponent]
 })
