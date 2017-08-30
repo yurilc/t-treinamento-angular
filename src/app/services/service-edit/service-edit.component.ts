@@ -12,8 +12,6 @@ import { ServicesService } from "../services.service";
 })
 export class ServiceEditComponent implements OnInit {
 
-  service = new Service('', 0);
-
   index: number;
 
   form = new FormGroup({
@@ -33,10 +31,16 @@ export class ServiceEditComponent implements OnInit {
       (params: Params) => {
         this.index = params['id'];
         if(this.index) {
-          this.service = this.servicesService
+          const service = this.servicesService
             .getService(this.index);
-        } else {
-          this.service = new Service('', null);
+          this.form.setValue(service);
+          /*this.form.setValue({
+            'name': '',
+            'value': 123
+          });
+          this.form.patchValue({
+            'value': 123
+          });*/
         }
       }
     );
@@ -51,7 +55,7 @@ export class ServiceEditComponent implements OnInit {
       this.servicesService.save(this.form.value);
       // this.router.navigate(['../'], { relativeTo: this.route });
     }
-    
+    //this.form.reset();
   }
 
 }
