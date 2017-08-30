@@ -1,19 +1,24 @@
 <div class="row">
     <div class="col-xs-12">
-        <h3>
-          <ng-content></ng-content>
-        </h3>
+      <form (ngSubmit)="onSave(f)" #f="ngForm">
         <div class="row">
             <div class="col-xs-12">
-              <div class="form-group" #agencia>
+              <div class="form-group"
+                [ngClass]="{'has-error': agencia.invalid && agencia.touched}">
                 <label for="agencia" class="control-label">
                   Agência
                 </label>
                 <input
                   type="number"
                   id="agencia"
+                  name="agencia"
                   class="form-control"
-                  [(ngModel)]="conta.agencia">
+                  ngModel
+                  required
+                  #agencia="ngModel">
+                <span
+                  *ngIf="agencia.invalid && agencia.touched"
+                  class="help-block">Favor informar a Agência!</span>
               </div>
             </div>
         </div>
@@ -26,8 +31,10 @@
                   <input
                     type="number"
                     id="conta"
+                    name="conta"
                     class="form-control"
-                    [(ngModel)]="conta.conta">
+                    ngModel
+                    required>
                 </div>
             </div>
         </div>
@@ -40,8 +47,10 @@
                 <input
                   type="text"
                   id="tipo"
+                  name="tipo"
                   class="form-control"
-                  [(ngModel)]="conta.tipo">
+                  ngModel
+                  required>
               </div>
             </div>
         </div>
@@ -54,16 +63,19 @@
               <input
                 type="number"
                 id="saldo"
+                name="saldo"
                 class="form-control"
                 (change)="log()"
-                [(ngModel)]="conta.saldo"
-                [negativeHighlight]="conta.saldo">
+                [negativeHighlight]="conta.saldo"
+                ngModel
+                required>
             </div>
           </div>
         </div>
         <button
-          type="button"
+          type="submit"
           class="btn btn-primary"
-          (click)="onSave()">Salvar</button>
+          [disabled]="f.invalid">Salvar</button>
+      </form>
     </div>
 </div>

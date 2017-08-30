@@ -11,11 +11,12 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     canActivate(route: ActivatedRouteSnapshot,
                 routerState: RouterStateSnapshot ):
                     Observable<boolean> | Promise<boolean> | boolean {
-        return new Promise<boolean>( (resolve, reject) => {
+        /*return new Promise<boolean>( (resolve, reject) => {
             setTimeout(() => {
                 resolve(this.authService.isLoggedIn())
             }, 1000);
-        });
+        });*/
+        return true;
     }
 
     canActivateChild(route: ActivatedRouteSnapshot,

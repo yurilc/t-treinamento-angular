@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, Input, Output, EventEmitter,
           ViewChild, ElementRef, DoCheck,
           AfterContentInit, OnDestroy, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 import { Account } from '../account.model';
 import { AccountsService } from "../accounts.service";
@@ -104,7 +105,8 @@ export class AccountEditComponent implements
     console.log('OnDestroy');
   }
 
-  onSave() {
+  onSave(form: NgForm) {
+    console.log(form);
     this.isEditing = false;
     //this.accountSaved.next(this.conta);
     if(this.index != null) {
@@ -114,6 +116,6 @@ export class AccountEditComponent implements
     }
     // this.conta = new Account(0, 0, '', 0);
     // this.index = null;
-    this.router.navigate(['/accounts']);
+    //this.router.navigate(['/accounts']);
   }
 }
