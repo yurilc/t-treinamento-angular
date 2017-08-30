@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import { Service } from '../service.model';
 import { ServicesService } from "../services.service";
@@ -14,6 +15,14 @@ export class ServiceEditComponent implements OnInit {
   service = new Service('', 0);
 
   index: number;
+
+  form = new FormGroup({
+    'name': new FormControl(null, Validators.required),
+    'value': new FormControl(null, [
+      Validators.required,
+      Validators.min(0)
+    ])
+  });
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -34,12 +43,13 @@ export class ServiceEditComponent implements OnInit {
   }
 
   onSave() {
+    console.log(this.form.value);
     if(this.index) {
-      this.servicesService.update(this.index, this.service);
-      this.router.navigate(['../../'], { relativeTo: this.route });
+      this.servicesService.update(this.index, this.form.value);
+      // this.router.navigate(['../../'], { relativeTo: this.route });
     } else {
-      this.servicesService.save(this.service);
-      this.router.navigate(['../'], { relativeTo: this.route });
+      this.servicesService.save(this.form.value);
+      // this.router.navigate(['../'], { relativeTo: this.route });
     }
     
   }
