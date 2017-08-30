@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p>Agência: {{ conta.agencia }}</p>
+    <p>Conta: {{ conta.conta }}</p>
+    <p>Tipo: {{ conta.tipo }}</p>
+    <p>Saldo: {{ conta.saldo }}</p>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="onEdit()">Alterar Dados</button>
+  </div>
+</div>

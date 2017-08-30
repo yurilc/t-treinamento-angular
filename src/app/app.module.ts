@@ -18,6 +18,7 @@ import { LoggingService } from "./shared/logging.service";
 import { ServicesService } from "./services/services.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from "./app-routing.module";
+import { AccountDetailComponent } from './account/account-detail/account-detail.component';
 
 
 
@@ -35,7 +36,8 @@ import { AppRoutingModule } from "./app-routing.module";
     DemoSwitchComponent,
     ReversePipe,
     ResumePipe,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AccountDetailComponent
   ],
   imports: [
     BrowserModule,
