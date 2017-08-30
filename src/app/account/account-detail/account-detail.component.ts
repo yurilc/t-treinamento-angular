@@ -33,8 +33,14 @@ export class AccountDetailComponent implements OnInit {
   onEdit() {
     this.router.navigate(['edit'], { relativeTo: this.route });
   }
-  
+
   onShowTransactions(){
-    this.router.navigate(['transactions'], { relativeTo: this.route });
+    this.router.navigate(['transactions'], {
+      relativeTo: this.route,
+      queryParams: {
+        'start': '2017-08-01',
+        'end': '2017-08-31'
+      }
+    });
   }
 }
