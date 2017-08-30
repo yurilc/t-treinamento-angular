@@ -18,7 +18,7 @@ export class ServicesService {
             this.servicesSubject.next(
                 this.services.slice()
             );
-        }, 2000);
+        }, 500);
     }
 
     getService(index: number) {
@@ -27,9 +27,11 @@ export class ServicesService {
 
     save(service: Service) {
         this.services.push(service);
+        this.servicesSubject.next(this.services.slice());
     }
 
     update(index: number, service: Service) {
         this.services[index] = service;
+        this.servicesSubject.next(this.services.slice());
     }
 }

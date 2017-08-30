@@ -36,10 +36,12 @@ export class ServiceEditComponent implements OnInit {
   onSave() {
     if(this.index) {
       this.servicesService.update(this.index, this.service);
+      this.router.navigate(['../../'], { relativeTo: this.route });
     } else {
       this.servicesService.save(this.service);
+      this.router.navigate(['../'], { relativeTo: this.route });
     }
-    this.router.navigate(['/services']);
+    
   }
 
 }
