@@ -7,8 +7,8 @@ import { Service } from './service.model';
 export class ServicesService {
 
     private services = [
-        new Service('SMS', 2.25),
-        new Service('Cheque Especial', 1.99)
+        new Service('SMS', 2.25, []),
+        new Service('Cheque Especial', 1.99, [])
     ];
 
     servicesSubject = new Subject<Service[]>();

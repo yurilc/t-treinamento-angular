@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
@@ -24,7 +24,8 @@ export class ServiceEditComponent implements OnInit {
     'value': new FormControl(null, [
       Validators.required,
       Validators.min(0)
-    ])
+    ]),
+    'items': new FormArray([])
   });
 
   constructor(private router: Router,
@@ -85,4 +86,8 @@ export class ServiceEditComponent implements OnInit {
     })
   }
 
+  onAddItem() {
+    (<FormArray>this.form.get('items'))
+      .push(new FormControl());
+  }
 }

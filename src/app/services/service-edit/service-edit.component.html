@@ -42,6 +42,25 @@
           </div>
 
           <button
+            type="button"
+            class="btn btn-info"
+            (click)="onAddItem()">
+            Novo item
+          </button>
+
+          <div formArrayName="items">
+            <div class="form-group"
+              *ngFor="let item of form.get('items')
+              .controls; let i = index">
+              <input
+                type="text"
+                class="form-control"
+                [formControlName]="i"
+                >
+            </div>
+          </div>
+
+          <button
             class="btn btn-primary"
             type="submit"
             [disabled]="form.invalid">Salvar</button>
