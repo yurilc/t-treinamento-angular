@@ -9,4 +9,8 @@ export class AuthService {
     logout() {
         this.loggedIn = false;
     }
+
+    isLoggedIn() {
+        return this.loggedIn;
+    }
 }

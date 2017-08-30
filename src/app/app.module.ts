@@ -21,6 +21,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AccountDetailComponent } from './account/account-detail/account-detail.component';
 import { TransactionListComponent } from './transaction-list/transaction-list.component';
 import { AuthService } from "./auth/auth.service";
+import { AuthGuard } from "./auth/auth-guard.service";
 
 
 
@@ -50,7 +51,8 @@ import { AuthService } from "./auth/auth.service";
   providers: [
     LoggingService,
     ServicesService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
