@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  page = 'accounts';
+  
+  constructor(private router: Router) {}
 
-  showPage(page) {
-    this.page = page;
+  onLoadContas() {
+    this.router.navigate(['/accounts'], {
+      fragment: 'can-edit'
+    });
   }
 }

@@ -50,4 +50,10 @@ export class AccountListComponent implements OnInit {
     this.router.navigate(['/accounts', 'new']);
   }
 
+  onDetail(index: number) {
+    this.router.navigate(['/accounts', index], {
+      preserveFragment: true
+    });
+  }
+
 }

@@ -4,7 +4,7 @@
       <li
         class="list-group-item"
         *ngFor="let conta of contas; let i = index"
-        [routerLink]="['/accounts', i]"
+       (click)="onDetail(i)"
         routerLinkActive="active">
           <p>{{ conta.agencia }} - {{ conta.conta }}</p>
           <p>{{ conta.tipo | resume : limit }}</p>

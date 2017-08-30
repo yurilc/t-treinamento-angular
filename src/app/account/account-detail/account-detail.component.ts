@@ -11,6 +11,7 @@ import { AccountsService } from "../accounts.service";
 })
 export class AccountDetailComponent implements OnInit {
 
+  canEdit: boolean;
   conta: Account = new Account();
 
   constructor(private route: ActivatedRoute,
@@ -28,6 +29,11 @@ export class AccountDetailComponent implements OnInit {
           this.router.navigate(['/accounts']);
         }
       });
+      this.route.fragment.subscribe(
+        (fragment: string) => {
+          this.canEdit = fragment === 'can-edit';
+        }
+      );
   }
 
   onEdit() {
