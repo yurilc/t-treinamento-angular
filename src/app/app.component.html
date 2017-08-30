@@ -10,6 +10,13 @@
         <li routerLinkActive="active"><a
             routerLink="/services">Serviços</a></li>
       </ul>
+
+      <div class="navbar-right">
+        <ul class="nav navbar-nav">
+          <li><a (click)="onLogin()" style="cursor: pointer;">Login</a></li>
+          <li><a (click)="onLogout()" style="cursor: pointer;">Logout</a></li>
+        </ul>
+      </div>
     </div>
 </nav>
 

@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from "./app-routing.module";
 import { AccountDetailComponent } from './account/account-detail/account-detail.component';
 import { TransactionListComponent } from './transaction-list/transaction-list.component';
+import { AuthService } from "./auth/auth.service";
 
 
 
@@ -48,7 +49,8 @@ import { TransactionListComponent } from './transaction-list/transaction-list.co
   ],
   providers: [
     LoggingService,
-    ServicesService
+    ServicesService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
