@@ -28,11 +28,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onLogin() {
-    this.authService.login();
-  }
-
   onLogout() {
     this.authService.logout();
+  }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
   }
 }

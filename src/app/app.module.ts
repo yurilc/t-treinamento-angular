@@ -25,6 +25,7 @@ import { AuthService } from "./auth/auth.service";
 import { AuthGuard } from "./auth/auth-guard.service";
 import { AccountEditGuard } from "./account/account-edit/account-edit-guard.service";
 import { UserFormComponent } from './auth/user-form/user-form.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 
@@ -45,7 +46,8 @@ import { UserFormComponent } from './auth/user-form/user-form.component';
     PageNotFoundComponent,
     AccountDetailComponent,
     TransactionListComponent,
-    UserFormComponent
+    UserFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

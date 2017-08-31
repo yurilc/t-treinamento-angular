@@ -4,12 +4,18 @@ export class AuthService {
 
     private loggedIn = false;
 
-    login() {
+    login(email: string, password: string) {
         this.loggedIn = true;
+        return firebase.auth()
+            .signInWithEmailAndPassword(
+                email,
+                password
+            );
     }
 
     logout() {
-        this.loggedIn = false;
+        firebase.auth().signOut()
+            .then(()=> this.loggedIn = false);
     }
 
     isLoggedIn() {
