@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { Response } from '@angular/http';
 
 import { Service } from '../service.model';
 import { ServicesService } from "../services.service";
@@ -67,7 +68,12 @@ export class ServiceEditComponent implements OnInit {
       this.servicesService.update(this.index, this.form.value);
       this.router.navigate(['../../'], { relativeTo: this.route });
     } else {
-      this.servicesService.save(this.form.value);
+      this.servicesService.save(this.form.value)
+        .subscribe(
+          (response: Response) => {
+            console.log(response);
+          }
+        );
       this.router.navigate(['../'], { relativeTo: this.route });
     }
     //this.form.reset();

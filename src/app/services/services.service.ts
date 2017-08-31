@@ -1,9 +1,12 @@
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
+import { Http } from '@angular/http';
 
 import { Service } from './service.model';
 
+@Injectable()
 export class ServicesService {
 
     private services = [
@@ -12,6 +15,8 @@ export class ServicesService {
     ];
 
     servicesSubject = new Subject<Service[]>();
+
+    constructor(private http: Http) {}
 
     getServices() {
         setTimeout(() => {
@@ -26,8 +31,9 @@ export class ServicesService {
     }
 
     save(service: Service) {
-        this.services.push(service);
-        this.servicesSubject.next(this.services.slice());
+        //this.services.push(service);
+        //this.servicesSubject.next(this.services.slice());
+        return this.http.post('https://t-treinamento-angular.firebaseio.com/services.json', service);
     }
 
     update(index: number, service: Service) {
