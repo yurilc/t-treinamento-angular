@@ -39,6 +39,15 @@ export class ServiceEditComponent implements OnInit {
         if(this.index) {
           const service = this.servicesService
             .getService(this.index);
+          
+            this.form.setControl('items', new FormArray([]));
+            
+            if(service.items) {
+              service.items.forEach(() => {
+              this.onAddItem();
+            });
+          }
+          
           this.form.setValue(service);
           /*this.form.setValue({
             'name': '',
