@@ -17,7 +17,6 @@ import { CommonModule } from "@angular/common";
         AccountEditComponent,
         AccountDetailComponent,
         TransactionListComponent
-        
     ],
     imports: [
         CommonModule,
