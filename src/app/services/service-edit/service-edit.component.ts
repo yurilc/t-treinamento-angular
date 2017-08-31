@@ -99,4 +99,9 @@ export class ServiceEditComponent implements OnInit {
     (<FormArray>this.form.get('items'))
       .push(new FormControl());
   }
+
+  onRemoveItem(index: number) {
+    (<FormArray>this.form.get('items'))
+      .removeAt(index);
+  }
 }

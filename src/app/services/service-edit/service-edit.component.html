@@ -49,14 +49,23 @@
           </button>
 
           <div formArrayName="items">
-            <div class="form-group"
+            <div class="row form-group"
               *ngFor="let item of form.get('items')
               .controls; let i = index">
-              <input
-                type="text"
-                class="form-control"
-                [formControlName]="i"
-                >
+              <div class="col-xs-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  [formControlName]="i">
+              </div>
+              <div class="col-xs-2">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="onRemoveItem(i)">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </button>
+              </div>
             </div>
           </div>
 
