@@ -65,10 +65,10 @@ export class ServiceEditComponent implements OnInit {
     console.log(this.form.value);
     if(this.index) {
       this.servicesService.update(this.index, this.form.value);
-      // this.router.navigate(['../../'], { relativeTo: this.route });
+      this.router.navigate(['../../'], { relativeTo: this.route });
     } else {
       this.servicesService.save(this.form.value);
-      // this.router.navigate(['../'], { relativeTo: this.route });
+      this.router.navigate(['../'], { relativeTo: this.route });
     }
     //this.form.reset();
   }

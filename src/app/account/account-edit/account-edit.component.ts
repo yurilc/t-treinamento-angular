@@ -44,7 +44,7 @@ export class AccountEditComponent implements
     this.route.params.subscribe(
       (params: Params) => {
         this.index = params['id'];
-        this.loadAccount();
+        setTimeout(()=>this.loadAccount());
       }
     );
     // console.log(this.renderer);
@@ -63,12 +63,12 @@ export class AccountEditComponent implements
   }
 
   canDeactivate(): boolean {
-    const canDeactivate = this.isEditing && (
+    const canDeactivate = this.isEditing /*&& (
       this.contaOriginal.agencia != this.conta.agencia
       || this.contaOriginal.conta != this.conta.conta
       || this.contaOriginal.tipo != this.conta.tipo
       || this.contaOriginal.saldo != this.conta.saldo
-    );
+    )*/;
 
     if(canDeactivate) {
       return confirm('Gostaria de sair desta página?');
@@ -80,6 +80,7 @@ export class AccountEditComponent implements
   loadAccount() {
     if(this.index) {
       this.conta = this.accountsService.getAccount(this.index);
+      this.form.setValue(this.conta);
     } else {
       this.conta = new Account(0, 0, '', 0);
     }
