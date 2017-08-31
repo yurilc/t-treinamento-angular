@@ -47,7 +47,9 @@ export class ServiceEditComponent implements OnInit {
               service.items.forEach(() => {
               this.onAddItem();
             });
-          }
+            } else {
+              service.items = [];
+            }
           
           this.form.setValue(service);
           /*this.form.setValue({
@@ -70,8 +72,8 @@ export class ServiceEditComponent implements OnInit {
     } else {
       this.servicesService.save(this.form.value)
         .subscribe(
-          (response: Response) => {
-            console.log(response);
+          (services: Service[]) => {
+            console.log(services);
           },
           (error) => {
             console.log('Serivice Edit',error);

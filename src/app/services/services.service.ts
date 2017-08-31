@@ -27,6 +27,9 @@ export class ServicesService {
         ).do((services: Service[]) => {
             if(services && services != null) {
                 this.services = services;
+                this.servicesSubject.next(
+                    this.services.slice()
+                );
             }
         });
         // setTimeout(() => {
@@ -52,7 +55,16 @@ export class ServicesService {
             {
                 headers: headers
             }
-        );
+        ).map(
+            (response: Response) => {
+                return response.json()
+            }
+        ).do((services: Service[]) => {
+            this.services = services;
+            this.servicesSubject.next(
+                this.services.slice()
+            );
+        });
     }
 
     update(index: number, service: Service) {

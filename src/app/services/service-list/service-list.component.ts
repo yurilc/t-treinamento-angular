@@ -24,22 +24,18 @@ export class ServiceListComponent implements OnInit, OnDestroy {
                 private route: ActivatedRoute) {}
 
     ngOnInit() {
-        // this.subscription = this.servicesService
-        //     .servicesSubject
-        //     .subscribe(
-        //         (services: Service[]) => {
-        //             this.services = services;
-        //         });
-        this.servicesService.getServices()
+        this.subscription = this.servicesService
+            .servicesSubject
             .subscribe(
                 (services: Service[]) => {
                     this.services = services;
-                }
-            );
+                });
+        this.servicesService.getServices()
+            .subscribe();
     }
 
     ngOnDestroy() {
-        //this.subscription.unsubscribe();
+        this.subscription.unsubscribe();
         //this.servicesService.unsubscribe();
     }
 
