@@ -16,6 +16,11 @@ export class UserFormComponent implements OnInit {
     'password': new FormControl(null,[
       Validators.required,
       Validators.minLength(6)
+    ]),
+    'passwordConf': new FormControl(null,[
+      Validators.required,
+      Validators.minLength(6),
+      this.validarSenhas.bind(this)
     ])
   });
 
@@ -27,4 +32,16 @@ export class UserFormComponent implements OnInit {
   onSubmit() {
     console.log(this.form.value);
   }
+
+  validarSenhas(control: FormControl):
+    {[key: string]: any} {
+      if(control.parent) {
+        const password = control.parent.get('password').value
+        const passwordConf = control.value;
+        if(password !== passwordConf) {
+          return { 'diffPassword': true };
+        }
+      }
+      return null;
+    }
 }

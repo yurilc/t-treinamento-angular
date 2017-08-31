@@ -34,6 +34,31 @@
             class="help-block">Favor informar uma senha com pelo menos 6 caracteres!</span>
         </div>
       </div>
+      
+      <div class="row">
+        <div class="form-group"
+        [ngClass]="{'has-error': form.get('passwordConf').invalid && form.get('passwordConf').touched}">
+          <label
+            for="passwordConf"
+            class="control-label">Confirmação</label>
+          <input
+            type="password"
+            id="passwordConf"
+            class="form-control"
+            formControlName="passwordConf">
+          <span
+            *ngIf="form.get('passwordConf').invalid && form.get('passwordConf').touched"
+            class="help-block">
+            <span
+              *ngIf="form.get('passwordConf').errors['required'] || form.get('passwordConf').errors['minlength']"
+            >Favor informar uma senha com pelo menos 6 caracteres!</span>
+            <br>
+            <span
+              *ngIf="form.get('passwordConf').errors['diffPassword']"
+            >As senhas são diferentes!</span>
+          </span>
+        </div>
+      </div>
 
       <div class="row">
         <button
