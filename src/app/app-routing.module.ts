@@ -10,7 +10,7 @@ import { AccountDetailComponent } from "./account/account-detail/account-detail.
 import { TransactionListComponent } from "./transaction-list/transaction-list.component";
 import { AuthGuard } from "./auth/auth-guard.service";
 import { AccountEditGuard } from "./account/account-edit/account-edit-guard.service";
-
+import { UserFormComponent } from './auth/user-form/user-form.component';
 const routes: Routes = [
     { path: '', redirectTo: '/accounts', pathMatch: 'full' },
     { path: 'accounts', component: AccountListComponent,
@@ -31,6 +31,7 @@ const routes: Routes = [
       { path: ':id/edit', component: ServiceEditComponent, },
       { path: 'new', component: ServiceEditComponent }
     ] },
+    { path: 'register', component: UserFormComponent },
     { path: 'not-found', component: PageNotFoundComponent },
     { path: '**', redirectTo: '/not-found' }
   ];

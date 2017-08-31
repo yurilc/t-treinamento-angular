@@ -24,6 +24,7 @@ import { TransactionListComponent } from './transaction-list/transaction-list.co
 import { AuthService } from "./auth/auth.service";
 import { AuthGuard } from "./auth/auth-guard.service";
 import { AccountEditGuard } from "./account/account-edit/account-edit-guard.service";
+import { UserFormComponent } from './auth/user-form/user-form.component';
 
 
 
@@ -43,7 +44,8 @@ import { AccountEditGuard } from "./account/account-edit/account-edit-guard.serv
     ResumePipe,
     PageNotFoundComponent,
     AccountDetailComponent,
-    TransactionListComponent
+    TransactionListComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
