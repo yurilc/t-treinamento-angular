@@ -14,6 +14,7 @@ import { UserFormComponent } from './auth/user-form/user-form.component';
 import { LoginComponent } from "./auth/login/login.component";
 const routes: Routes = [
     { path: '', redirectTo: '/accounts', pathMatch: 'full' },
+    { path: 'accounts', loadChildren: './account/account.module#AccountModule' },
     { path: 'services', component: ServiceListComponent, children: [
       { path: ':id/edit', component: ServiceEditComponent, },
       { path: 'new', component: ServiceEditComponent }

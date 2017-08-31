@@ -7,20 +7,21 @@ import { AccountDetailComponent } from "./account-detail/account-detail.componen
 import { TransactionListComponent } from "../transaction-list/transaction-list.component";
 import { AccountListComponent } from "./account-list/account-list.component";
 
-const routes: Routes = [{ path: 'accounts', component: AccountListComponent,
-canActivateChild: [AuthGuard],
-children: [
-  { 
-    path: ':id/edit',
-    component: AccountEditComponent,
-    canActivate: [AuthGuard],
-    canDeactivate: [AccountEditGuard]
-  },
-  { path: 'new', component: AccountEditComponent },
-  { path: ':id', component: AccountDetailComponent, children: [
-    { path: 'transactions', component: TransactionListComponent },
-  ] }
-] }];
+const routes: Routes = [
+  { path: '', component: AccountListComponent,
+  canActivateChild: [AuthGuard],
+  children: [
+    { 
+      path: ':id/edit',
+      component: AccountEditComponent,
+      canActivate: [AuthGuard],
+      canDeactivate: [AccountEditGuard]
+    },
+    { path: 'new', component: AccountEditComponent },
+    { path: ':id', component: AccountDetailComponent, children: [
+      { path: 'transactions', component: TransactionListComponent },
+    ] }
+  ] }];
 
 @NgModule({
     imports: [

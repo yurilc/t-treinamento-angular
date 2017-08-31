@@ -18,16 +18,17 @@ import { UserFormComponent } from './auth/user-form/user-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AccountModule } from "./account/account.module";
 import { SharedModule } from "./shared/shared.module";
+import { CoreModule } from "./core/core.module";
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
     ServiceListComponent,
     ServiceEditComponent,
     DemoSwitchComponent,
-    PageNotFoundComponent,
     UserFormComponent,
     LoginComponent
   ],
@@ -37,16 +38,10 @@ import { SharedModule } from "./shared/shared.module";
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    AccountModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
-  providers: [
-    LoggingService,
-    ServicesService,
-    AuthService,
-    AuthGuard,
-    AccountEditGuard
-  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,16 +19,9 @@ import { CommonModule } from "@angular/common";
         TransactionListComponent
     ],
     imports: [
-        CommonModule,
         FormsModule,
         SharedModule,
         AccountRoutingModule
-    ],
-    exports: [
-        AccountComponent,
-        AccountListComponent,
-        AccountEditComponent,
-        AccountDetailComponent
     ]
 })
 export class AccountModule {}
