@@ -72,6 +72,9 @@ export class ServiceEditComponent implements OnInit {
         .subscribe(
           (response: Response) => {
             console.log(response);
+          },
+          (error) => {
+            console.log('Serivice Edit',error);
           }
         );
       this.router.navigate(['../'], { relativeTo: this.route });
