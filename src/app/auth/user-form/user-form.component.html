@@ -2,7 +2,8 @@
   <div class="col-xs-6 col-xs-offset-3">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="row">
-        <div class="form-group">
+        <div class="form-group"
+          [ngClass]="{'has-error': form.get('email').invalid && form.get('email').touched}">
           <label
             for="email"
             class="control-label">E-mail</label>
@@ -11,11 +12,15 @@
             id="email"
             class="form-control"
             formControlName="email">
+          <span
+            *ngIf="form.get('email').invalid && form.get('email').touched"
+            class="help-block">Favor informar um E-mail válido!</span>
         </div>
       </div>
 
       <div class="row">
-        <div class="form-group">
+        <div class="form-group"
+        [ngClass]="{'has-error': form.get('password').invalid && form.get('password').touched}">
           <label
             for="password"
             class="control-label">Password</label>
@@ -24,13 +29,17 @@
             id="password"
             class="form-control"
             formControlName="password">
+            <span
+            *ngIf="form.get('password').invalid && form.get('password').touched"
+            class="help-block">Favor informar uma senha com pelo menos 6 caracteres!</span>
         </div>
       </div>
 
       <div class="row">
         <button
           type="submit"
-          class="btn btn-primary">Cadastar</button>
+          class="btn btn-primary"
+          [disabled]="form.invalid">Cadastar</button>
       </div>
     </form>
   </div>
