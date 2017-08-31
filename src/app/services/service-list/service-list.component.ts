@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { Response } from '@angular/http';
 
 import { Service } from '../service.model';
 import { ServicesService } from '../services.service';
@@ -23,17 +24,22 @@ export class ServiceListComponent implements OnInit, OnDestroy {
                 private route: ActivatedRoute) {}
 
     ngOnInit() {
-        this.subscription = this.servicesService
-            .servicesSubject
+        // this.subscription = this.servicesService
+        //     .servicesSubject
+        //     .subscribe(
+        //         (services: Service[]) => {
+        //             this.services = services;
+        //         });
+        this.servicesService.getServices()
             .subscribe(
                 (services: Service[]) => {
                     this.services = services;
-                });
-        this.servicesService.getServices();
+                }
+            );
     }
 
     ngOnDestroy() {
-        this.subscription.unsubscribe();
+        //this.subscription.unsubscribe();
         //this.servicesService.unsubscribe();
     }
 

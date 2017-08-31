@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
+import 'rxjs/Rx';
 
 import { environment } from '../../environments/environment';
 import { Service } from './service.model';
@@ -10,21 +11,29 @@ import { Service } from './service.model';
 @Injectable()
 export class ServicesService {
 
-    private services = [
-        new Service('SMS', 2.25, []),
-        new Service('Cheque Especial', 1.99, [])
-    ];
+    private services = [];
 
     servicesSubject = new Subject<Service[]>();
 
     constructor(private http: Http) {}
 
     getServices() {
-        setTimeout(() => {
-            this.servicesSubject.next(
-                this.services.slice()
-            );
-        }, 500);
+        return this.http.get(
+            environment.apiUrl + 'services.json'
+        ).map(
+            (response: Response) => {
+                return response.json()
+            }
+        ).do((services: Service[]) => {
+            if(services && services != null) {
+                this.services = services;
+            }
+        });
+        // setTimeout(() => {
+        //     this.servicesSubject.next(
+        //         this.services.slice()
+        //     );
+        // }, 500);
     }
 
     getService(index: number) {
