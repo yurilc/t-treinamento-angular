@@ -14,20 +14,6 @@ import { UserFormComponent } from './auth/user-form/user-form.component';
 import { LoginComponent } from "./auth/login/login.component";
 const routes: Routes = [
     { path: '', redirectTo: '/accounts', pathMatch: 'full' },
-    { path: 'accounts', component: AccountListComponent,
-    canActivateChild: [AuthGuard],
-    children: [
-      { 
-        path: ':id/edit',
-        component: AccountEditComponent,
-        canActivate: [AuthGuard],
-        canDeactivate: [AccountEditGuard]
-      },
-      { path: 'new', component: AccountEditComponent },
-      { path: ':id', component: AccountDetailComponent, children: [
-        { path: 'transactions', component: TransactionListComponent },
-      ] }
-    ] },
     { path: 'services', component: ServiceListComponent, children: [
       { path: ':id/edit', component: ServiceEditComponent, },
       { path: 'new', component: ServiceEditComponent }
