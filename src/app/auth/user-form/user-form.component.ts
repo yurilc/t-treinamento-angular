@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-user-form',
@@ -24,13 +25,17 @@ export class UserFormComponent implements OnInit {
     ])
   });
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    const value = this.form.value;
+    this.authService.registerUser(
+      value.email,
+      value.password
+    );
   }
 
   validarSenhas(control: FormControl):

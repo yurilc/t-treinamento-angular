@@ -1,3 +1,5 @@
+import * as firebase from 'firebase';
+
 export class AuthService {
 
     private loggedIn = false;
@@ -12,5 +14,13 @@ export class AuthService {
 
     isLoggedIn() {
         return this.loggedIn;
+    }
+
+    registerUser(email: string, password: string) {
+        firebase.auth()
+            .createUserWithEmailAndPassword(
+                email,
+                password
+            );
     }
 }
