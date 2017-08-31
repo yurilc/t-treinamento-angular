@@ -50,8 +50,7 @@
 
           <div formArrayName="items">
             <div class="row form-group"
-              *ngFor="let item of form.get('items')
-              .controls; let i = index">
+              *ngFor="let item of getItemsControls(); let i = index">
               <div class="col-xs-10">
                 <input
                   type="text"

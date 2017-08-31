@@ -4,13 +4,15 @@ import { ReversePipe } from "./reverse.pipe";
 import { NegativeHighlightDirective } from "./negative-highlight.directive";
 import { DelayDirective } from "./delay.directive";
 import { CommonModule } from "@angular/common";
+import { HighlightDirective } from "./highlight.directive";
 
 @NgModule({
     declarations:[
         ResumePipe,
         ReversePipe,
         NegativeHighlightDirective,
-        DelayDirective
+        DelayDirective,
+        HighlightDirective
     ],
     imports: [
         CommonModule
@@ -20,7 +22,8 @@ import { CommonModule } from "@angular/common";
         ResumePipe,
         ReversePipe,
         NegativeHighlightDirective,
-        DelayDirective
+        DelayDirective,
+        HighlightDirective
     ]
 })
 export class SharedModule {}
